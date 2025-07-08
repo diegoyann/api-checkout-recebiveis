@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Size.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Size.Api.Controllers.CarrinhoController">
+            <summary>
+            Controller para gerenciamento do carrinho de antecipação
+            </summary>
+        </member>
+        <member name="M:Size.Api.Controllers.CarrinhoController.#ctor(Size.Application.Interfaces.IServicoCarrinho)">
+            <summary>
+            Construtor do controller de carrinho
+            </summary>
+            <param name="servicoCarrinho">Serviço de carrinho</param>
+        </member>
+        <member name="M:Size.Api.Controllers.CarrinhoController.ObterCarrinhoPorEmpresa(System.Int32)">
+            <summary>
+            Obtém o carrinho ativo de uma empresa no formato de checkout
+            </summary>
+            <param name="empresaId">ID da empresa</param>
+            <returns>Dados do carrinho da empresa no formato de checkout</returns>
+            <response code="200">Carrinho encontrado</response>
+            <response code="404">Empresa não encontrada</response>
+        </member>
+        <member name="M:Size.Api.Controllers.CarrinhoController.AdicionarItem(Size.Application.DTOs.AdicionarItemCarrinhoDto)">
+            <summary>
+            Adiciona uma nota fiscal ao carrinho
+            </summary>
+            <param name="dto">Dados para adicionar item ao carrinho</param>
+            <returns>Resultado da operação</returns>
+            <response code="200">Item adicionado com sucesso</response>
+            <response code="400">Erro na validação dos dados</response>
+            <response code="404">Empresa ou nota fiscal não encontrada</response>
+        </member>
+        <member name="M:Size.Api.Controllers.CarrinhoController.RemoverItem(Size.Application.DTOs.RemoverItemCarrinhoDto)">
+            <summary>
+            Remove uma nota fiscal do carrinho
+            </summary>
+            <param name="dto">Dados para remover item do carrinho</param>
+            <returns>Resultado da operação</returns>
+            <response code="200">Item removido com sucesso</response>
+            <response code="400">Erro na validação dos dados</response>
+            <response code="404">Carrinho ou nota fiscal não encontrada</response>
+        </member>
+        <member name="M:Size.Api.Controllers.CarrinhoController.RealizarCheckout(System.Int32)">
+            <summary>
+            Realiza o checkout do carrinho (simulação de antecipação)
+            </summary>
+            <param name="empresaId">ID da empresa</param>
+            <returns>Resultado do checkout com valores calculados</returns>
+            <response code="200">Checkout realizado com sucesso</response>
+            <response code="400">Carrinho vazio ou inválido</response>
+            <response code="404">Carrinho não encontrado</response>
+        </member>
+        <member name="M:Size.Api.Controllers.CarrinhoController.LimparCarrinho(System.Int32)">
+            <summary>
+            Limpa o carrinho de uma empresa
+            </summary>
+            <param name="empresaId">ID da empresa</param>
+            <returns>Resultado da operação</returns>
+            <response code="200">Carrinho limpo com sucesso</response>
+            <response code="404">Carrinho não encontrado</response>
+        </member>
+        <member name="M:Size.Api.Controllers.CarrinhoController.AtualizarCarrinho(Size.Application.DTOs.AtualizarCarrinhoDto)">
+            <summary>
+            Atualiza o carrinho substituindo todos os itens pelos especificados
+            </summary>
+            <param name="atualizarCarrinhoDto">Dados para atualização do carrinho</param>
+            <returns>Carrinho atualizado</returns>
+            <response code="200">Carrinho atualizado com sucesso</response>
+            <response code="400">Dados inválidos</response>
+            <response code="404">Empresa não encontrada</response>
+        </member>
+        <member name="T:Size.Api.Controllers.EmpresaController">
+            <summary>
+            Controller para gerenciamento de empresas
+            </summary>
+        </member>
+        <member name="M:Size.Api.Controllers.EmpresaController.#ctor(SizeApi.Application.Interfaces.IServicoEmpresa)">
+            <summary>
+            Construtor do controller de empresas
+            </summary>
+            <param name="servicoEmpresa">Serviço de empresas</param>
+        </member>
+        <member name="M:Size.Api.Controllers.EmpresaController.ObterTodas">
+            <summary>
+            Obtém todas as empresas cadastradas
+            </summary>
+            <returns>Lista de empresas</returns>
+            <response code="200">Lista de empresas retornada com sucesso</response>
+        </member>
+        <member name="M:Size.Api.Controllers.EmpresaController.ObterPorId(System.Int32)">
+            <summary>
+            Obtém uma empresa específica por ID
+            </summary>
+            <param name="id">ID da empresa</param>
+            <returns>Dados da empresa</returns>
+            <response code="200">Empresa encontrada</response>
+            <response code="404">Empresa não encontrada</response>
+        </member>
+        <member name="M:Size.Api.Controllers.EmpresaController.ObterPorCnpj(System.String)">
+            <summary>
+            Obtém uma empresa por CNPJ
+            </summary>
+            <param name="cnpj">CNPJ da empresa</param>
+            <returns>Dados da empresa</returns>
+            <response code="200">Empresa encontrada</response>
+            <response code="404">Empresa não encontrada</response>
+        </member>
+        <member name="M:Size.Api.Controllers.EmpresaController.CriarEmpresa(Size.Application.DTOs.CriarEmpresaDto)">
+            <summary>
+            Cria uma nova empresa
+            </summary>
+            <param name="criarEmpresaDto">Dados da empresa a ser criada</param>
+            <returns>Empresa criada</returns>
+            <response code="201">Empresa criada com sucesso</response>
+            <response code="400">Dados inválidos</response>
+        </member>
+        <member name="M:Size.Api.Controllers.EmpresaController.AtualizarEmpresa(System.Int32,Size.Application.DTOs.AtualizarEmpresaDto)">
+            <summary>
+            Atualiza uma empresa existente
+            </summary>
+            <param name="id">ID da empresa</param>
+            <param name="atualizarEmpresaDto">Dados atualizados da empresa</param>
+            <returns>Empresa atualizada</returns>
+            <response code="200">Empresa atualizada com sucesso</response>
+            <response code="400">Dados inválidos</response>
+            <response code="404">Empresa não encontrada</response>
+        </member>
+        <member name="T:Size.API.Controllers.NotasFiscaisController">
+            <summary>
+            Controller responsável pelas operações relacionadas às notas fiscais
+            </summary>
+        </member>
+        <member name="M:Size.API.Controllers.NotasFiscaisController.#ctor(Size.Application.Interfaces.IServicoNotaFiscal)">
+            <summary>
+            Construtor do controller de notas fiscais
+            </summary>
+            <param name="servicoNotaFiscal">Serviço de notas fiscais</param>
+        </member>
+        <member name="M:Size.API.Controllers.NotasFiscaisController.CriarNotaFiscal(Size.Application.DTOs.CriarNotaFiscalDto)">
+            <summary>
+            Cria uma nova nota fiscal
+            </summary>
+            <param name="criarNotaFiscalDto">Dados da nota fiscal a ser criada</param>
+            <returns>Nota fiscal criada</returns>
+            <response code="201">Nota fiscal criada com sucesso</response>
+            <response code="400">Dados inválidos</response>
+            <response code="409">Número da nota fiscal já existe para a empresa</response>
+        </member>
+        <member name="M:Size.API.Controllers.NotasFiscaisController.ObterNotaFiscalPorId(System.Int32)">
+            <summary>
+            Obtém uma nota fiscal por ID
+            </summary>
+            <param name="id">Identificador da nota fiscal</param>
+            <returns>Nota fiscal encontrada</returns>
+            <response code="200">Nota fiscal encontrada</response>
+            <response code="404">Nota fiscal não encontrada</response>
+        </member>
+        <member name="M:Size.API.Controllers.NotasFiscaisController.ObterNotasFiscaisPorEmpresa(System.Int32)">
+            <summary>
+            Obtém todas as notas fiscais de uma empresa
+            </summary>
+            <param name="empresaId">Identificador da empresa</param>
+            <returns>Lista de notas fiscais da empresa</returns>
+            <response code="200">Lista de notas fiscais</response>
+        </member>
+        <member name="M:Size.API.Controllers.NotasFiscaisController.RemoverNotaFiscal(System.Int32)">
+            <summary>
+            Remove uma nota fiscal
+            </summary>
+            <param name="id">Identificador da nota fiscal</param>
+            <returns>Confirmação da remoção</returns>
+            <response code="204">Nota fiscal removida com sucesso</response>
+            <response code="404">Nota fiscal não encontrada</response>
+        </member>
+        <member name="M:Size.API.Controllers.NotasFiscaisController.AtualizarNotaFiscal(System.Int32,Size.Application.DTOs.AtualizarNotaFiscalDto)">
+            <summary>
+            Atualiza uma nota fiscal existente
+            </summary>
+            <param name="id">ID da nota fiscal</param>
+            <param name="atualizarNotaFiscalDto">Dados atualizados da nota fiscal</param>
+            <returns>Nota fiscal atualizada</returns>
+            <response code="200">Nota fiscal atualizada com sucesso</response>
+            <response code="400">Dados inválidos</response>
+            <response code="404">Nota fiscal não encontrada</response>
+        </member>
+    </members>
+</doc>

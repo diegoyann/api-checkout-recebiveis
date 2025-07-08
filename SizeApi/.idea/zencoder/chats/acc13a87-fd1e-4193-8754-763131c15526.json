@@ -1,0 +1,909 @@
+{
+    "checksum": "5f012c81f5882c8aa684a57d0282423817ef754e814b9f5dfe19e10474480623",
+    "data": {
+    "id": "acc13a87-fd1e-4193-8754-763131c15526",
+    "createdAt": 1752001789228,
+    "updatedAt": 1752001789230,
+    "title": "Crie uma documentação Markdown explicando a est...",
+    "messages": [
+        {
+            "id": "f4fce355-363e-4d86-a2b1-2bfef61d316e",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Crie uma documentação Markdown explicando a estrutura do projeto. A presença de C, como digo, e Ant concorrem na vaga de desenvolvedor .NET backend. A partir das instruções que irei passar, explique como executar o projeto utilizando o Docker Compose e também utilizando os comandos .NET. Utilize a linguagem simples, otimizada, porém também técnica. E também deixe o arquivo Markdown o mais simples possível. Antecipação de Recebível"
+                },
+                {
+                    "type": "text",
+                    "text": "Seu desafio será implementar um serviço que calcule a antecipação de recebível de uma empresa,"
+                },
+                {
+                    "type": "text",
+                    "text": "O que é Antecipação de Recebível?"
+                },
+                {
+                    "type": "text",
+                    "text": "Uma antecipação de recebíveis, de forma bem simples, é quando uma empresa ou pessoa vende algo a prazo e, ao invés de esperar o pagamento no futuro, ela quer o dinheiro antes. Para conseguir esse dinheiro antecipado, ela pede para o banco ou uma financeira adiantar o valor das vendas que ainda vão ser pagas."
+                },
+                {
+                    "type": "text",
+                    "text": "Imagine que uma empresa vende um serviço ou produto para outra empresa e emite uma nota fiscal de R$ 10.000,00. A empresa compradora tem um prazo de 30 dias para pagar essa nota. Ou seja, a empresa que vendeu só vai receber o dinheiro daqui a 30 dias."
+                },
+                {
+                    "type": "text",
+                    "text": "Agora, suponha que essa empresa precisa do dinheiro antes e não pode esperar os 30 dias. Ela pode ir a um banco ou uma financeira e pedir para antecipar o valor dessa nota fiscal. O banco então \"compra\" essa nota, adiantando o dinheiro para a empresa. No entanto, o banco vai cobrar uma taxa de antecipação. Então, ao invés de receber os R$ 10.000,00, a empresa vai receber um valor menor, por exemplo, R$ 9.700,00, com o banco ficando com a diferença como pagamento pela antecipação."
+                },
+                {
+                    "type": "text",
+                    "text": "Resumindo: a antecipação de recebíveis com nota fiscal é quando uma empresa vende a prazo, emite uma nota fiscal e, em vez de esperar o pagamento no vencimento, pede para um banco antecipar o valor. Isso dá à empresa o dinheiro agora, mas com um desconto pela taxa do banco."
+                },
+                {
+                    "type": "text",
+                    "text": "Objetivo"
+                },
+                {
+                    "type": "text",
+                    "text": "Implementar um serviço onde uma empresa pode solicitar a antecipação de recebíveis, calculando o valor a ser antecipado com base nas notas fiscais cadastradas e no limite de crédito, que varia de acordo com o faturamento mensal e o ramo da empresa."
+                },
+                {
+                    "type": "text",
+                    "text": "Requisitos Funcionais"
+                },
+                {
+                    "type": "text",
+                    "text": "Cadastro de Empresas"
+                },
+                {
+                    "type": "text",
+                    "text": "A empresa deve se cadastrar com os seguintes dados:"
+                },
+                {
+                    "type": "text",
+                    "text": "CNPJ (obrigatório)"
+                },
+                {
+                    "type": "text",
+                    "text": "Nome (obrigatório)"
+                },
+                {
+                    "type": "text",
+                    "text": "Faturamento Mensal (obrigatório)"
+                },
+                {
+                    "type": "text",
+                    "text": "Ramo (obrigatório, “Serviços” ou “Produtos”)"
+                },
+                {
+                    "type": "text",
+                    "text": "Cálculo de Limite"
+                },
+                {
+                    "type": "text",
+                    "text": "O limite de antecipação varia conforme o faturamento mensal e o ramo da empresa:"
+                },
+                {
+                    "type": "text",
+                    "text": "Faturamento entre R$ 10.000,00 e R$ 50.000,00"
+                },
+                {
+                    "type": "text",
+                    "text": "50% do faturamento."
+                },
+                {
+                    "type": "text",
+                    "text": "Faturamento entre R$ 50.001,00 e R$ 100.000,00"
+                },
+                {
+                    "type": "text",
+                    "text": "Empresa de Serviços 55% do faturamento."
+                },
+                {
+                    "type": "text",
+                    "text": "Empresa de Produtos 60% do faturamento."
+                },
+                {
+                    "type": "text",
+                    "text": "Faturamento acima de R$ 100.001,00"
+                },
+                {
+                    "type": "text",
+                    "text": "Empresa de Serviços 60% do faturamento."
+                },
+                {
+                    "type": "text",
+                    "text": "Empresa de Produtos 65% do faturamento."
+                },
+                {
+                    "type": "text",
+                    "text": "Cadastro de Notas Fiscais"
+                },
+                {
+                    "type": "text",
+                    "text": "A empresa deve cadastrar NFs com os seguintes dados:"
+                },
+                {
+                    "type": "text",
+                    "text": "Número (obrigatório)"
+                },
+                {
+                    "type": "text",
+                    "text": "Valor (obrigatório)"
+                },
+                {
+                    "type": "text",
+                    "text": "Data de Vencimento (obrigatório, formato de data, vencimento maior que hoje)"
+                },
+                {
+                    "type": "text",
+                    "text": "Carrinho de Antecipação"
+                },
+                {
+                    "type": "text",
+                    "text": "A empresa pode adicionar e remover notas fiscais ao carrinho."
+                },
+                {
+                    "type": "text",
+                    "text": "As notas fiscais no carrinho devem ser usadas para calcular o valor a ser antecipado."
+                },
+                {
+                    "type": "text",
+                    "text": "O valor total das notas no carrinho não pode ultrapassar o limite de crédito da empresa."
+                },
+                {
+                    "type": "text",
+                    "text": "Cálculo de Antecipação (Checkout)"
+                },
+                {
+                    "type": "text",
+                    "text": "Para calcular o valor a ser antecipado no carrinho, seguir a fórmula:"
+                },
+                {
+                    "type": "text",
+                    "text": "Prazo: Data Atual - Data de Vencimento da Nota Fiscal (em dias)"
+                },
+                {
+                    "type": "text",
+                    "text": "Taxa: 4,65% ao mês"
+                },
+                {
+                    "type": "text",
+                    "text": "Deságio: ValorNF / (1 + Taxa)^(Prazo / 30)"
+                },
+                {
+                    "type": "text",
+                    "text": "Valor Líquido: ValorNF - Deságio"
+                },
+                {
+                    "type": "text",
+                    "text": "O sistema deve retornar um JSON com o valor final de antecipação para cada nota e o valor total do carrinho."
+                },
+                {
+                    "type": "codeSnippet",
+                    "text": "{\n  \"empresa\": \"Nome da Empresa\",\n  \"cnpj\": \"XXXXXXXXXXXXXX\",\n  \"limite\": 50000,\n  \"notas_fiscais\": [\n    {\n      \"numero\": 1234,\n      \"valor_bruto\": 10000,\n      \"valor_liquido\": 9534.88\n    },\n    {\n      \"numero\": 5678,\n      \"valor_bruto\": 20000,\n      \"valor_liquido\": 19069.75\n    }\n  ],\n  \"total_liquido\": 28574.63\n  \"total_bruto\": 30000\n}"
+                },
+                {
+                    "type": "text",
+                    "text": "Entregar"
+                },
+                {
+                    "type": "text",
+                    "text": "Backup do banco usado (dê preferência para SQL Server)"
+                },
+                {
+                    "type": "text",
+                    "text": "Código Fonte"
+                },
+                {
+                    "type": "text",
+                    "text": "Caso de Exemplo"
+                },
+                {
+                    "type": "text",
+                    "text": "Qualqer outra dúvida, estamos a disposição para tirar Supondo que um usuario tenha as seguintes NFS"
+                },
+                {
+                    "type": "text",
+                    "text": "NF 10"
+                },
+                {
+                    "type": "text",
+                    "text": "Vencimento 15/11/2024"
+                },
+                {
+                    "type": "text",
+                    "text": "Valor R$ 5000,00"
+                },
+                {
+                    "type": "text",
+                    "text": "Prazo: 30"
+                },
+                {
+                    "type": "text",
+                    "text": "Deságio: R$ 192,31"
+                },
+                {
+                    "type": "text",
+                    "text": "Valor Liquido: R$ 4.807,69"
+                },
+                {
+                    "type": "text",
+                    "text": "NF 11"
+                },
+                {
+                    "type": "text",
+                    "text": "Vencimento 15/12/2024"
+                },
+                {
+                    "type": "text",
+                    "text": "Valor Bruto R$ 7000,00"
+                },
+                {
+                    "type": "text",
+                    "text": "Prazo: 60"
+                },
+                {
+                    "type": "text",
+                    "text": "Deságio: R$ 528,11"
+                },
+                {
+                    "type": "text",
+                    "text": "Valor Liquido: R$ 6471,89"
+                },
+                {
+                    "type": "text",
+                    "text": "NF 1"
+                },
+                {
+                    "type": "text",
+                    "text": "Vencimento 31/10/2024"
+                },
+                {
+                    "type": "text",
+                    "text": "Valor Bruto R$ 850,80"
+                },
+                {
+                    "type": "text",
+                    "text": "Prazo 15"
+                },
+                {
+                    "type": "text",
+                    "text": "Deságio: R$ 16,52"
+                },
+                {
+                    "type": "text",
+                    "text": "Valor Liquido: R$ 834,28"
+                },
+                {
+                    "type": "codeSnippet",
+                    "text": "{\n  \"empresa\": \"Nome da Empresa\",\n  \"cnpj\": \"XXXXXXXXXXXXXX\",\n  \"limite\": 50000,\n  \"notas_fiscais\": [\n    {\n      \"numero\": 1,\n      \"valor_bruto\": 850.80,\n      \"valor_liquido\": 834.28\n    },\n    {\n      \"numero\": 10,\n      \"valor_bruto\": 5000,\n      \"valor_liquido\": 4807.69\n    },\n    {\n      \"numero\": 11,\n      \"valor_bruto\": 7000,\n      \"valor_liquido\": 6471.89\n    }\n  ],\n  \"total_liquido\": 12113.86\n  \"total_bruto\": 12850.80\n}"
+                }
+            ],
+            "context": {
+                "codebaseEnabled": true
+            },
+            "createdAt": 1752001789229,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Crie uma documentação Markdown explicando a estrutura do projeto. A presença de C, como digo, e Ant concorrem na vaga de desenvolvedor .NET backend. A partir das instruções que irei passar, explique como executar o projeto utilizando o Docker Compose e também utilizando os comandos .NET. Utilize a linguagem simples, otimizada, porém também técnica. E também deixe o arquivo Markdown o mais simples possível. Antecipação de Recebível"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Seu desafio será implementar um serviço que calcule a antecipação de recebível de uma empresa,"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "O que é Antecipação de Recebível?"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Uma antecipação de recebíveis, de forma bem simples, é quando uma empresa ou pessoa vende algo a prazo e, ao invés de esperar o pagamento no futuro, ela quer o dinheiro antes. Para conseguir esse dinheiro antecipado, ela pede para o banco ou uma financeira adiantar o valor das vendas que ainda vão ser pagas."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Imagine que uma empresa vende um serviço ou produto para outra empresa e emite uma nota fiscal de R$ 10.000,00. A empresa compradora tem um prazo de 30 dias para pagar essa nota. Ou seja, a empresa que vendeu só vai receber o dinheiro daqui a 30 dias."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Agora, suponha que essa empresa precisa do dinheiro antes e não pode esperar os 30 dias. Ela pode ir a um banco ou uma financeira e pedir para antecipar o valor dessa nota fiscal. O banco então \"compra\" essa nota, adiantando o dinheiro para a empresa. No entanto, o banco vai cobrar uma taxa de antecipação. Então, ao invés de receber os R$ 10.000,00, a empresa vai receber um valor menor, por exemplo, R$ 9.700,00, com o banco ficando com a diferença como pagamento pela antecipação."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Resumindo: a antecipação de recebíveis com nota fiscal é quando uma empresa vende a prazo, emite uma nota fiscal e, em vez de esperar o pagamento no vencimento, pede para um banco antecipar o valor. Isso dá à empresa o dinheiro agora, mas com um desconto pela taxa do banco."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Objetivo"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Implementar um serviço onde uma empresa pode solicitar a antecipação de recebíveis, calculando o valor a ser antecipado com base nas notas fiscais cadastradas e no limite de crédito, que varia de acordo com o faturamento mensal e o ramo da empresa."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Requisitos Funcionais"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Cadastro de Empresas"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "A empresa deve se cadastrar com os seguintes dados:"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "CNPJ (obrigatório)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Nome (obrigatório)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Faturamento Mensal (obrigatório)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Ramo (obrigatório, “Serviços” ou “Produtos”)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Cálculo de Limite"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "O limite de antecipação varia conforme o faturamento mensal e o ramo da empresa:"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Faturamento entre R$ 10.000,00 e R$ 50.000,00"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "50% do faturamento."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Faturamento entre R$ 50.001,00 e R$ 100.000,00"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Empresa de Serviços 55% do faturamento."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Empresa de Produtos 60% do faturamento."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Faturamento acima de R$ 100.001,00"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Empresa de Serviços 60% do faturamento."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Empresa de Produtos 65% do faturamento."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Cadastro de Notas Fiscais"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "A empresa deve cadastrar NFs com os seguintes dados:"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Número (obrigatório)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Valor (obrigatório)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Data de Vencimento (obrigatório, formato de data, vencimento maior que hoje)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Carrinho de Antecipação"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "A empresa pode adicionar e remover notas fiscais ao carrinho."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "As notas fiscais no carrinho devem ser usadas para calcular o valor a ser antecipado."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "O valor total das notas no carrinho não pode ultrapassar o limite de crédito da empresa."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Cálculo de Antecipação (Checkout)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Para calcular o valor a ser antecipado no carrinho, seguir a fórmula:"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Prazo: Data Atual - Data de Vencimento da Nota Fiscal (em dias)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Taxa: 4,65% ao mês"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Deságio: ValorNF / (1 + Taxa)^(Prazo / 30)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Valor Líquido: ValorNF - Deságio"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "O sistema deve retornar um JSON com o valor final de antecipação para cada nota e o valor total do carrinho."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "codeBlock",
+                        "attrs": {
+                            "language": null
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "{\n  \"empresa\": \"Nome da Empresa\",\n  \"cnpj\": \"XXXXXXXXXXXXXX\",\n  \"limite\": 50000,\n  \"notas_fiscais\": [\n    {\n      \"numero\": 1234,\n      \"valor_bruto\": 10000,\n      \"valor_liquido\": 9534.88\n    },\n    {\n      \"numero\": 5678,\n      \"valor_bruto\": 20000,\n      \"valor_liquido\": 19069.75\n    }\n  ],\n  \"total_liquido\": 28574.63\n  \"total_bruto\": 30000\n}"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Entregar"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Backup do banco usado (dê preferência para SQL Server)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Código Fonte"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Caso de Exemplo"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Qualqer outra dúvida, estamos a disposição para tirar Supondo que um usuario tenha as seguintes NFS"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "NF 10"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Vencimento 15/11/2024"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Valor R$ 5000,00"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Prazo: 30"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Deságio: R$ 192,31"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Valor Liquido: R$ 4.807,69"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "NF 11"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Vencimento 15/12/2024"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Valor Bruto R$ 7000,00"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Prazo: 60"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Deságio: R$ 528,11"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Valor Liquido: R$ 6471,89"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "NF 1"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Vencimento 31/10/2024"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Valor Bruto R$ 850,80"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Prazo 15"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Deságio: R$ 16,52"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Valor Liquido: R$ 834,28"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "codeBlock",
+                        "attrs": {
+                            "language": null
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "{\n  \"empresa\": \"Nome da Empresa\",\n  \"cnpj\": \"XXXXXXXXXXXXXX\",\n  \"limite\": 50000,\n  \"notas_fiscais\": [\n    {\n      \"numero\": 1,\n      \"valor_bruto\": 850.80,\n      \"valor_liquido\": 834.28\n    },\n    {\n      \"numero\": 10,\n      \"valor_bruto\": 5000,\n      \"valor_liquido\": 4807.69\n    },\n    {\n      \"numero\": 11,\n      \"valor_bruto\": 7000,\n      \"valor_liquido\": 6471.89\n    }\n  ],\n  \"total_liquido\": 12113.86\n  \"total_bruto\": 12850.80\n}"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "isAgent": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "isE2EAgent": false,
+    "autoApply": false
+}
+}

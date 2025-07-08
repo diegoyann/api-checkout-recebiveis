@@ -1,0 +1,134 @@
+{
+    "checksum": "b3b47fb2f962624887f2f1b3ebef49f77b5bc8b8f4cce1e6dcca1e4cdb716169",
+    "data": {
+    "id": "991207cd-9ab0-4120-be4b-66fc77b1f74a",
+    "createdAt": 1751995467313,
+    "updatedAt": 1751995467315,
+    "title": "Now listening on: http://0.0.0.0:5000 info: Mic...",
+    "messages": [
+        {
+            "id": "62c05146-bdda-4e57-b3ff-01884281382b",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Now listening on: http://0.0.0.0:5000"
+                },
+                {
+                    "type": "text",
+                    "text": "info: Microsoft.Hosting.Lifetime[0]"
+                },
+                {
+                    "type": "text",
+                    "text": "      Application started. Press Ctrl+C to shut down."
+                },
+                {
+                    "type": "text",
+                    "text": "info: Microsoft.Hosting.Lifetime[0]"
+                },
+                {
+                    "type": "text",
+                    "text": "      Hosting environment: Development"
+                },
+                {
+                    "type": "text",
+                    "text": "info: Microsoft.Hosting.Lifetime[0]"
+                },
+                {
+                    "type": "text",
+                    "text": "      Content root path: E:\\Pessoal\\Profissional\\Testes\\SizeApi\\Size.Api"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "Size.Application\\Size.Application.csproj",
+                    "fsPath": "E:\\Pessoal\\Profissional\\Testes\\SizeApi\\Size.Application\\Size.Application.csproj",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "﻿<Project Sdk=\"Microsoft.NET.Sdk\">\r\n\r\n  <ItemGroup>\r\n    <ProjectReference Include=\"..\\Size.Domain\\Size.Domain.csproj\" />\r\n  </ItemGroup>\r\n\r\n  <ItemGroup>\r\n    <PackageReference Include=\"Microsoft.EntityFrameworkCore\" Version=\"9.0.6\" />\r\n    <PackageReference Include=\"Microsoft.EntityFrameworkCore.Design\" Version=\"9.0.6\">\r\n      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>\r\n      <PrivateAssets>all</PrivateAssets>\r\n    </PackageReference>\r\n    <PackageReference Include=\"Microsoft.EntityFrameworkCore.Tools\" Version=\"9.0.6\">\r\n      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>\r\n      <PrivateAssets>all</PrivateAssets>\r\n    </PackageReference>\r\n    \r\n      <ProjectReference Include=\"..\\Size.Domain\\Size.Domain.csproj\" />\r\n  </ItemGroup>\r\n\r\n  <PropertyGroup>\r\n    <TargetFramework>net8.0</TargetFramework>\r\n    <ImplicitUsings>enable</ImplicitUsings>\r\n    <Nullable>enable</Nullable>\r\n  </PropertyGroup>\r\n\r\n</Project>\r\n"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1751995467315,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "      Now listening on: http://0.0.0.0:5000"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "info: Microsoft.Hosting.Lifetime[0]"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "      Application started. Press Ctrl+C to shut down."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "info: Microsoft.Hosting.Lifetime[0]"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "      Hosting environment: Development"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "info: Microsoft.Hosting.Lifetime[0]"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "      Content root path: E:\\Pessoal\\Profissional\\Testes\\SizeApi\\Size.Api"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph"
+                    }
+                ]
+            }
+        }
+    ],
+    "isAgent": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "isE2EAgent": false,
+    "autoApply": false
+}
+}

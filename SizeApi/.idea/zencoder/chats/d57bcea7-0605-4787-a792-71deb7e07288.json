@@ -1,0 +1,1577 @@
+{
+    "checksum": "c2d4e8b1df04802b8c4870766a7c1e4b98591fc70317713bb115db7eb9dce23c",
+    "data": {
+    "id": "d57bcea7-0605-4787-a792-71deb7e07288",
+    "createdAt": 1751998807914,
+    "updatedAt": 1752000422442,
+    "title": "Docker Compose Version Fix",
+    "messages": [
+        {
+            "id": "3cb6eb22-28d6-4060-8960-12b01690fcf5",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "me ajude a corrigir ╰─ docker compose down -v"
+                },
+                {
+                    "type": "text",
+                    "text": "time=\"2025-07-08T15:19:52-03:00\" level=warning msg=\"E:\\\\Pessoal\\\\Profissional\\\\Testes\\\\SizeApi\\\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion\""
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "Size.Application\\Validations\\DataVencimentoFuturaAttribute.cs",
+                    "fsPath": "E:\\Pessoal\\Profissional\\Testes\\SizeApi\\Size.Application\\Validations\\DataVencimentoFuturaAttribute.cs",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "using System.ComponentModel.DataAnnotations;\r\n\r\nnamespace Size.Application.Validations;\r\n\r\n/// <summary>\r\n/// Atributo de validação customizado para garantir que a data de vencimento seja futura\r\n/// </summary>\r\npublic class DataVencimentoFuturaAttribute : ValidationAttribute\r\n{\r\n    /// <summary>\r\n    /// Construtor padrão com mensagem de erro\r\n    /// </summary>\r\n    public DataVencimentoFuturaAttribute() : base(\"A data de vencimento deve ser maior que a data atual\")\r\n    {\r\n    }\r\n\r\n    /// <summary>\r\n    /// Valida se a data é futura\r\n    /// </summary>\r\n    /// <param name=\"value\">Valor a ser validado</param>\r\n    /// <param name=\"validationContext\">Contexto de validação</param>\r\n    /// <returns>Resultado da validação</returns>\r\n    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)\r\n    {\r\n        if (value == null)\r\n        {\r\n            return new ValidationResult(\"A data de vencimento é obrigatória\");\r\n        }\r\n\r\n        if (value is DateTime dataVencimento)\r\n        {\r\n            // Compara apenas a data, ignorando a hora\r\n            if (dataVencimento.Date <= DateTime.Now.Date)\r\n            {\r\n                return new ValidationResult(\"A data de vencimento deve ser maior que a data atual\");\r\n            }\r\n        }\r\n        else\r\n        {\r\n            return new ValidationResult(\"Formato de data inválido\");\r\n        }\r\n\r\n        return ValidationResult.Success;\r\n    }\r\n}"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1751998807915,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "me ajude a corrigir ╰─ docker compose down -v"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "time=\"2025-07-08T15:19:52-03:00\" level=warning msg=\"E:\\\\Pessoal\\\\Profissional\\\\Testes\\\\SizeApi\\\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion\""
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "1b945a4a-84e5-41fc-a2a1-fe93f2e4c3dc",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Vou ajudar você a corrigir esse aviso do Docker Compose. O problema é que o atributo `version` no arquivo `docker-compose.yml` está obsoleto nas versões mais recentes do Docker Compose.\n\nPrimeiro, vou verificar o arquivo atual para ver como está estruturado:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01YMmXbNNgZ5jpk8qZ6eVFdS",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "docker-compose.yml",
+                                "fsPath": "E:\\Pessoal\\Profissional\\Testes\\SizeApi\\docker-compose.yml"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Perfeito! Agora vou corrigir o arquivo removendo a linha `version: '3.8'` que está obsoleta. Nas versões mais recentes do Docker Compose, essa linha não é mais necessária e causa o aviso que você está vendo."
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01BzgCjni7y1J8Mz7CRGq7Gg",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "docker-compose.yml",
+                                "fsPath": "E:\\Pessoal\\Profissional\\Testes\\SizeApi\\docker-compose.yml"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- docker-compose.yml\n+++ docker-compose.yml\n@@ -1,5 +1,3 @@\n-version: '3.8'\n-\n services:\n   sqlserver:\n     image: mcr.microsoft.com/mssql/server:2019-latest",
+                    "refToolCallId": "toolu_01BzgCjni7y1J8Mz7CRGq7Gg"
+                },
+                {
+                    "type": "text",
+                    "text": "Pronto! ✅ Corrigi o arquivo `docker-compose.yml` removendo a linha `version: '3.8'` que estava causando o aviso.\n\n## O que foi alterado:\n\n- **Removido**: A linha `version: '3.8'` (linha 1)\n- **Mantido**: Toda a estrutura e configuração dos serviços permanece inalterada\n\n## Por que essa mudança resolve o problema:\n\n1. **Versão obsoleta**: A partir do Docker Compose v2, o campo `version` não é mais necessário\n2. **Compatibilidade automática**: O Docker Compose agora detecta automaticamente o formato correto\n3. **Aviso eliminado**: Sem a linha `version`, o aviso não aparecerá mais\n\n## Testando a correção:\n\nAgora você pode executar novamente o comando sem o aviso:\n\n```bash\ndocker compose down -v\n```\n\nO comando funcionará normalmente, mas sem exibir o aviso sobre o atributo `version` obsoleto. Todas as funcionalidades do seu Docker Compose continuarão funcionando exatamente como antes."
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "docker-compose.yml",
+                            "patch": "@@ -1,22 +1,4 @@\n-version: '3.8'%0D%0A%0D%0A\n serv\n",
+                            "isNew": false,
+                            "isApplied": true
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "ceb1f8df-c2c9-4964-978d-7cdcb49c822f",
+                "usageStatistics": {
+                    "llmCallsUsedForAnswer": 3.0,
+                    "llmCallsUsedTotal": 101.0,
+                    "llmCallsLimit": 200.0,
+                    "limitRenewalMillisecondTimestamp": 1752081826701
+                }
+            },
+            "createdAt": 1751998821242,
+            "isInternal": false
+        },
+        {
+            "id": "dee2cb5e-f9cf-4f2c-b79c-f6d95ca71c15",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "meu container sizeapi-sqlserver nao esta sendo executado ao rodar o docker compose, esta ficando somente em waiting e nao esta executando"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "docker-compose.yml",
+                    "fsPath": "E:\\Pessoal\\Profissional\\Testes\\SizeApi\\docker-compose.yml",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "services:\r\n  sqlserver:\r\n    image: mcr.microsoft.com/mssql/server:2019-latest\r\n    container_name: sizeapi-sqlserver\r\n    environment:\r\n      - ACCEPT_EULA=Y\r\n      - SA_PASSWORD=SizeApi@2025!\r\n      - MSSQL_PID=Express\r\n    ports:\r\n      - \"1433:1433\"\r\n    volumes:\r\n      - sqlserver_data:/var/opt/mssql\r\n    networks:\r\n      - sizeapi-network\r\n    healthcheck:\r\n      test: [\"CMD-SHELL\", \"/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SizeApi@2025! -Q 'SELECT 1'\"]\r\n      interval: 30s\r\n      timeout: 10s\r\n      retries: 5\r\n      start_period: 60s\r\n\r\n  sizeapi:\r\n    build:\r\n      context: .\r\n      dockerfile: Dockerfile\r\n    container_name: sizeapi-app\r\n    environment:\r\n      - ASPNETCORE_ENVIRONMENT=Production\r\n      - ASPNETCORE_URLS=http://+:5000\r\n    ports:\r\n      - \"5000:5000\"\r\n    depends_on:\r\n      sqlserver:\r\n        condition: service_healthy\r\n    networks:\r\n      - sizeapi-network\r\n    restart: unless-stopped\r\n    healthcheck:\r\n      test: [\"CMD\", \"curl\", \"-f\", \"http://localhost:5000/health/live\"]\r\n      interval: 30s\r\n      timeout: 10s\r\n      retries: 3\r\n      start_period: 40s\r\n\r\nvolumes:\r\n  sqlserver_data:\r\n\r\nnetworks:\r\n  sizeapi-network:\r\n    driver: bridge"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1751999405800,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "meu container sizeapi-sqlserver nao esta sendo executado ao rodar o docker compose, esta ficando somente em waiting e nao esta executando"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "60b4009e-aacd-4613-b98b-058afda807d8",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Vou ajudar você a diagnosticar e resolver o problema com o container `sizeapi-sqlserver` que está ficando em estado de espera. Primeiro, vou verificar o arquivo completo para entender a configuração atual:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01DL5QG6acoudNEcbBDBHKa8",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "docker-compose.yml",
+                                "fsPath": "E:\\Pessoal\\Profissional\\Testes\\SizeApi\\docker-compose.yml"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou verificar o status atual dos containers e diagnosticar o problema:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01HUs3nwrvvsx1mmVuo1isSg",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "docker compose ps",
+                    "id": "e8ec5c44-e9e7-47ae-8093-ac2a2cff39df",
+                    "status": "CONFIRMATION",
+                    "toolCallId": "toolu_01HUs3nwrvvsx1mmVuo1isSg",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "docker",
+                            "arguments": [
+                                "compose",
+                                "ps"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "f9b790b1-db9b-4f38-8401-8bc39d36f466"
+            },
+            "createdAt": 1751999408965,
+            "isInternal": false
+        },
+        {
+            "id": "a01afb12-5c3c-4c81-8280-822e7b645930",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "╰─ docker compose ps"
+                },
+                {
+                    "type": "text",
+                    "text": "NAME                IMAGE                                        COMMAND                  SERVICE     CREATED              STATUS                                 PORTS"
+                },
+                {
+                    "type": "text",
+                    "text": "sizeapi-sqlserver   mcr.microsoft.com/mssql/server:2022-latest   \"/opt/mssql/bin/laun…\"   sqlserver   About a minute ago   Up About a minute (health: starting)   0.0.0.0:1433->1433/tcp"
+                },
+                {
+                    "type": "text",
+                    "text": "╭─ pwsh   SizeApi   166ms⠀"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "docker-compose.yml",
+                    "fsPath": "E:\\Pessoal\\Profissional\\Testes\\SizeApi\\docker-compose.yml",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "services:\r\n  sqlserver:\r\n    image: mcr.microsoft.com/mssql/server:2019-latest\r\n    container_name: sizeapi-sqlserver\r\n    environment:\r\n      - ACCEPT_EULA=Y\r\n      - SA_PASSWORD=SizeApi@2025!\r\n      - MSSQL_PID=Express\r\n    ports:\r\n      - \"1433:1433\"\r\n    volumes:\r\n      - sqlserver_data:/var/opt/mssql\r\n    networks:\r\n      - sizeapi-network\r\n    healthcheck:\r\n      test: [\"CMD-SHELL\", \"/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SizeApi@2025! -Q 'SELECT 1'\"]\r\n      interval: 30s\r\n      timeout: 10s\r\n      retries: 5\r\n      start_period: 60s\r\n\r\n  sizeapi:\r\n    build:\r\n      context: .\r\n      dockerfile: Dockerfile\r\n    container_name: sizeapi-app\r\n    environment:\r\n      - ASPNETCORE_ENVIRONMENT=Production\r\n      - ASPNETCORE_URLS=http://+:5000\r\n    ports:\r\n      - \"5000:5000\"\r\n    depends_on:\r\n      sqlserver:\r\n        condition: service_healthy\r\n    networks:\r\n      - sizeapi-network\r\n    restart: unless-stopped\r\n    healthcheck:\r\n      test: [\"CMD\", \"curl\", \"-f\", \"http://localhost:5000/health/live\"]\r\n      interval: 30s\r\n      timeout: 10s\r\n      retries: 3\r\n      start_period: 40s\r\n\r\nvolumes:\r\n  sqlserver_data:\r\n\r\nnetworks:\r\n  sizeapi-network:\r\n    driver: bridge"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1751999431839,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "╰─ docker compose ps"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "NAME                IMAGE                                        COMMAND                  SERVICE     CREATED              STATUS                                 PORTS"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "sizeapi-sqlserver   mcr.microsoft.com/mssql/server:2022-latest   \"/opt/mssql/bin/laun…\"   sqlserver   About a minute ago   Up About a minute (health: starting)   0.0.0.0:1433->1433/tcp"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "╭─ pwsh   SizeApi   166ms⠀       "
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "e1e1ea41-796d-48a4-bb9a-fdde0179af0f",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Vejo que o container está rodando, mas com status `health: starting`. Isso significa que o SQL Server está iniciando, mas o healthcheck ainda não passou. Vamos verificar os logs para entender melhor o que está acontecendo:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01JbRXVXKXeeEzC1esu5TAHw",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "docker compose logs sqlserver",
+                    "id": "330d8e6c-123d-4e58-9095-6506437ce53d",
+                    "status": "CONFIRMATION",
+                    "toolCallId": "toolu_01JbRXVXKXeeEzC1esu5TAHw",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "docker",
+                            "arguments": [
+                                "compose",
+                                "logs",
+                                "sqlserver"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "19d71254-283a-4bd7-983b-aede2966a088"
+            },
+            "createdAt": 1751999434895,
+            "isInternal": false
+        },
+        {
+            "id": "ac378f15-8dcd-467e-a2f0-ec10a9d85e56",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.77 spid27s     Starting up database 'msdb'."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.77 spid30s     The resource database build version is 16.00.4200. This is an informational message only. No user action is required."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.78 spid30s     [3]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0"
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.79 spid30s     Starting up database 'model'."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.84 spid27s     Converting database 'msdb' from version 927 to the current version 957."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.84 spid27s     Database 'msdb' running the upgrade step from version 927 to version 928."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.86 spid30s     Converting database 'model' from version 927 to the current version 957."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.87 spid30s     Database 'model' running the upgrade step from version 927 to version 928."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.87 spid27s     Database 'msdb' running the upgrade step from version 928 to version 929."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.88 spid30s     Database 'model' running the upgrade step from version 928 to version 929."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.90 spid27s     Database 'msdb' running the upgrade step from version 929 to version 930."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.90 spid30s     Database 'model' running the upgrade step from version 929 to version 930."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.91 spid30s     Database 'model' running the upgrade step from version 930 to version 931."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.91 spid27s     Database 'msdb' running the upgrade step from version 930 to version 931."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.92 spid30s     Database 'model' running the upgrade step from version 931 to version 932."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.93 spid30s     Database 'model' running the upgrade step from version 932 to version 933."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.93 spid27s     Database 'msdb' running the upgrade step from version 931 to version 932."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.94 spid30s     Database 'model' running the upgrade step from version 933 to version 934."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.94 spid27s     Database 'msdb' running the upgrade step from version 932 to version 933."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.94 spid30s     Database 'model' running the upgrade step from version 934 to version 935."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.95 spid27s     Database 'msdb' running the upgrade step from version 933 to version 934."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.95 spid30s     Database 'model' running the upgrade step from version 935 to version 936."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.96 spid27s     Database 'msdb' running the upgrade step from version 934 to version 935."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.96 spid30s     Database 'model' running the upgrade step from version 936 to version 937."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.97 spid30s     Database 'model' running the upgrade step from version 937 to version 938."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.97 spid27s     Database 'msdb' running the upgrade step from version 935 to version 936."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.97 spid30s     Database 'model' running the upgrade step from version 938 to version 939."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.97 spid27s     Database 'msdb' running the upgrade step from version 936 to version 937."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.98 spid30s     Database 'model' running the upgrade step from version 939 to version 940."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.98 spid27s     Database 'msdb' running the upgrade step from version 937 to version 938."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.99 spid30s     Database 'model' running the upgrade step from version 940 to version 941."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.99 spid27s     Database 'msdb' running the upgrade step from version 938 to version 939."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:37.99 spid30s     Database 'model' running the upgrade step from version 941 to version 942."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.00 spid27s     Database 'msdb' running the upgrade step from version 939 to version 940."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.00 spid30s     Database 'model' running the upgrade step from version 942 to version 943."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.00 spid27s     Database 'msdb' running the upgrade step from version 940 to version 941."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.01 spid27s     Database 'msdb' running the upgrade step from version 941 to version 942."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.02 spid30s     Database 'model' running the upgrade step from version 943 to version 944."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.02 spid27s     Database 'msdb' running the upgrade step from version 942 to version 943."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.03 spid30s     Database 'model' running the upgrade step from version 944 to version 945."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.04 spid30s     Database 'model' running the upgrade step from version 945 to version 946."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.04 spid30s     Database 'model' running the upgrade step from version 946 to version 947."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.05 spid27s     Database 'msdb' running the upgrade step from version 943 to version 944."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.05 spid30s     Database 'model' running the upgrade step from version 947 to version 948."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.06 spid27s     Database 'msdb' running the upgrade step from version 944 to version 945."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.06 spid30s     Database 'model' running the upgrade step from version 948 to version 949."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.07 spid30s     Database 'model' running the upgrade step from version 949 to version 950."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.07 spid27s     Database 'msdb' running the upgrade step from version 945 to version 946."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.07 spid30s     Database 'model' running the upgrade step from version 950 to version 951."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.08 spid27s     Database 'msdb' running the upgrade step from version 946 to version 947."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.09 spid30s     Database 'model' running the upgrade step from version 951 to version 952."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.09 spid27s     Database 'msdb' running the upgrade step from version 947 to version 948."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.10 spid30s     Database 'model' running the upgrade step from version 952 to version 953."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.10 spid27s     Database 'msdb' running the upgrade step from version 948 to version 949."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.11 spid30s     Database 'model' running the upgrade step from version 953 to version 954."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.11 spid27s     Database 'msdb' running the upgrade step from version 949 to version 950."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.11 spid30s     Database 'model' running the upgrade step from version 954 to version 955."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.12 spid27s     Database 'msdb' running the upgrade step from version 950 to version 951."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.12 spid30s     Database 'model' running the upgrade step from version 955 to version 956."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.14 spid27s     Database 'msdb' running the upgrade step from version 951 to version 952."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.14 spid30s     Database 'model' running the upgrade step from version 956 to version 957."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.15 spid27s     Database 'msdb' running the upgrade step from version 952 to version 953."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.17 spid27s     Database 'msdb' running the upgrade step from version 953 to version 954."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.17 spid30s     Clearing tempdb database."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.18 spid27s     Database 'msdb' running the upgrade step from version 954 to version 955."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.18 spid27s     Database 'msdb' running the upgrade step from version 955 to version 956."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.20 spid27s     Database 'msdb' running the upgrade step from version 956 to version 957."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.22 spid42s     A self-generated certificate was successfully loaded for encryption."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.22 spid42s     Server is listening on [ 'any' <ipv6> 1433] accept sockets 1."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.22 spid42s     Server is listening on [ 'any' <ipv4> 1433] accept sockets 1."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.23 spid42s     Dedicated administrator connection support was not started because it is disabled on this edition of SQL Server. If you want to use a dedicated administrator connection, restart SQL Server using the trace flag 7806. This is an informational message only. No user action is required."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.23 spid42s     Server is listening on [ ::1 <ipv6> 1431] accept sockets 1."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.23 spid42s     Server is listening on [ 127.0.0.1 <ipv4> 1431] accept sockets 1."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.23 spid42s     SQL Server is now ready for client connections. This is an informational message; no user action is required."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.29 spid30s     [2]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0"
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.29 spid30s     Starting up database 'tempdb'."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.35 spid43s     The Service Broker endpoint is in disabled or stopped state."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.35 spid43s     The Database Mirroring endpoint is in disabled or stopped state."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.36 spid43s     Service Broker manager has started."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.36 spid27s     Recovery is complete. This is an informational message only. No user action is required."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:28:38.37 spid36s     The default language (LCID 0) has been set for engine and full-text services."
+                },
+                {
+                    "type": "text",
+                    "text": "2025-07-08 18:29:07.72 spid39s     [DevOpsSnapshotTelemetryTask] Evaluating the background task."
+                },
+                {
+                    "type": "text",
+                    "text": "╭─ pwsh   SizeApi   173ms⠀"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "docker-compose.yml",
+                    "fsPath": "E:\\Pessoal\\Profissional\\Testes\\SizeApi\\docker-compose.yml",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "services:\r\n  sqlserver:\r\n    image: mcr.microsoft.com/mssql/server:2019-latest\r\n    container_name: sizeapi-sqlserver\r\n    environment:\r\n      - ACCEPT_EULA=Y\r\n      - SA_PASSWORD=SizeApi@2025!\r\n      - MSSQL_PID=Express\r\n    ports:\r\n      - \"1433:1433\"\r\n    volumes:\r\n      - sqlserver_data:/var/opt/mssql\r\n    networks:\r\n      - sizeapi-network\r\n    healthcheck:\r\n      test: [\"CMD-SHELL\", \"/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SizeApi@2025! -Q 'SELECT 1'\"]\r\n      interval: 30s\r\n      timeout: 10s\r\n      retries: 5\r\n      start_period: 60s\r\n\r\n  sizeapi:\r\n    build:\r\n      context: .\r\n      dockerfile: Dockerfile\r\n    container_name: sizeapi-app\r\n    environment:\r\n      - ASPNETCORE_ENVIRONMENT=Production\r\n      - ASPNETCORE_URLS=http://+:5000\r\n    ports:\r\n      - \"5000:5000\"\r\n    depends_on:\r\n      sqlserver:\r\n        condition: service_healthy\r\n    networks:\r\n      - sizeapi-network\r\n    restart: unless-stopped\r\n    healthcheck:\r\n      test: [\"CMD\", \"curl\", \"-f\", \"http://localhost:5000/health/live\"]\r\n      interval: 30s\r\n      timeout: 10s\r\n      retries: 3\r\n      start_period: 40s\r\n\r\nvolumes:\r\n  sqlserver_data:\r\n\r\nnetworks:\r\n  sizeapi-network:\r\n    driver: bridge"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1751999460421,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.77 spid27s     Starting up database 'msdb'."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.77 spid30s     The resource database build version is 16.00.4200. This is an informational message only. No user action is required."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.78 spid30s     [3]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.79 spid30s     Starting up database 'model'."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.84 spid27s     Converting database 'msdb' from version 927 to the current version 957."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.84 spid27s     Database 'msdb' running the upgrade step from version 927 to version 928."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.86 spid30s     Converting database 'model' from version 927 to the current version 957."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.87 spid30s     Database 'model' running the upgrade step from version 927 to version 928."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.87 spid27s     Database 'msdb' running the upgrade step from version 928 to version 929."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.88 spid30s     Database 'model' running the upgrade step from version 928 to version 929."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.90 spid27s     Database 'msdb' running the upgrade step from version 929 to version 930."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.90 spid30s     Database 'model' running the upgrade step from version 929 to version 930."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.91 spid30s     Database 'model' running the upgrade step from version 930 to version 931."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.91 spid27s     Database 'msdb' running the upgrade step from version 930 to version 931."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.92 spid30s     Database 'model' running the upgrade step from version 931 to version 932."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.93 spid30s     Database 'model' running the upgrade step from version 932 to version 933."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.93 spid27s     Database 'msdb' running the upgrade step from version 931 to version 932."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.94 spid30s     Database 'model' running the upgrade step from version 933 to version 934."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.94 spid27s     Database 'msdb' running the upgrade step from version 932 to version 933."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.94 spid30s     Database 'model' running the upgrade step from version 934 to version 935."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.95 spid27s     Database 'msdb' running the upgrade step from version 933 to version 934."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.95 spid30s     Database 'model' running the upgrade step from version 935 to version 936."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.96 spid27s     Database 'msdb' running the upgrade step from version 934 to version 935."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.96 spid30s     Database 'model' running the upgrade step from version 936 to version 937."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.97 spid30s     Database 'model' running the upgrade step from version 937 to version 938."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.97 spid27s     Database 'msdb' running the upgrade step from version 935 to version 936."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.97 spid30s     Database 'model' running the upgrade step from version 938 to version 939."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.97 spid27s     Database 'msdb' running the upgrade step from version 936 to version 937."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.98 spid30s     Database 'model' running the upgrade step from version 939 to version 940."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.98 spid27s     Database 'msdb' running the upgrade step from version 937 to version 938."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.99 spid30s     Database 'model' running the upgrade step from version 940 to version 941."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.99 spid27s     Database 'msdb' running the upgrade step from version 938 to version 939."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:37.99 spid30s     Database 'model' running the upgrade step from version 941 to version 942."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.00 spid27s     Database 'msdb' running the upgrade step from version 939 to version 940."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.00 spid30s     Database 'model' running the upgrade step from version 942 to version 943."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.00 spid27s     Database 'msdb' running the upgrade step from version 940 to version 941."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.01 spid27s     Database 'msdb' running the upgrade step from version 941 to version 942."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.02 spid30s     Database 'model' running the upgrade step from version 943 to version 944."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.02 spid27s     Database 'msdb' running the upgrade step from version 942 to version 943."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.03 spid30s     Database 'model' running the upgrade step from version 944 to version 945."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.04 spid30s     Database 'model' running the upgrade step from version 945 to version 946."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.04 spid30s     Database 'model' running the upgrade step from version 946 to version 947."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.05 spid27s     Database 'msdb' running the upgrade step from version 943 to version 944."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.05 spid30s     Database 'model' running the upgrade step from version 947 to version 948."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.06 spid27s     Database 'msdb' running the upgrade step from version 944 to version 945."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.06 spid30s     Database 'model' running the upgrade step from version 948 to version 949."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.07 spid30s     Database 'model' running the upgrade step from version 949 to version 950."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.07 spid27s     Database 'msdb' running the upgrade step from version 945 to version 946."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.07 spid30s     Database 'model' running the upgrade step from version 950 to version 951."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.08 spid27s     Database 'msdb' running the upgrade step from version 946 to version 947."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.09 spid30s     Database 'model' running the upgrade step from version 951 to version 952."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.09 spid27s     Database 'msdb' running the upgrade step from version 947 to version 948."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.10 spid30s     Database 'model' running the upgrade step from version 952 to version 953."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.10 spid27s     Database 'msdb' running the upgrade step from version 948 to version 949."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.11 spid30s     Database 'model' running the upgrade step from version 953 to version 954."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.11 spid27s     Database 'msdb' running the upgrade step from version 949 to version 950."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.11 spid30s     Database 'model' running the upgrade step from version 954 to version 955."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.12 spid27s     Database 'msdb' running the upgrade step from version 950 to version 951."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.12 spid30s     Database 'model' running the upgrade step from version 955 to version 956."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.14 spid27s     Database 'msdb' running the upgrade step from version 951 to version 952."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.14 spid30s     Database 'model' running the upgrade step from version 956 to version 957."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.15 spid27s     Database 'msdb' running the upgrade step from version 952 to version 953."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.17 spid27s     Database 'msdb' running the upgrade step from version 953 to version 954."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.17 spid30s     Clearing tempdb database."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.18 spid27s     Database 'msdb' running the upgrade step from version 954 to version 955."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.18 spid27s     Database 'msdb' running the upgrade step from version 955 to version 956."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.20 spid27s     Database 'msdb' running the upgrade step from version 956 to version 957."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.22 spid42s     A self-generated certificate was successfully loaded for encryption."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.22 spid42s     Server is listening on [ 'any' <ipv6> 1433] accept sockets 1."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.22 spid42s     Server is listening on [ 'any' <ipv4> 1433] accept sockets 1."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.23 spid42s     Dedicated administrator connection support was not started because it is disabled on this edition of SQL Server. If you want to use a dedicated administrator connection, restart SQL Server using the trace flag 7806. This is an informational message only. No user action is required."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.23 spid42s     Server is listening on [ ::1 <ipv6> 1431] accept sockets 1."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.23 spid42s     Server is listening on [ 127.0.0.1 <ipv4> 1431] accept sockets 1."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.23 spid42s     SQL Server is now ready for client connections. This is an informational message; no user action is required."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.29 spid30s     [2]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.29 spid30s     Starting up database 'tempdb'."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.35 spid43s     The Service Broker endpoint is in disabled or stopped state."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.35 spid43s     The Database Mirroring endpoint is in disabled or stopped state."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.36 spid43s     Service Broker manager has started."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.36 spid27s     Recovery is complete. This is an informational message only. No user action is required."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:28:38.37 spid36s     The default language (LCID 0) has been set for engine and full-text services."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "2025-07-08 18:29:07.72 spid39s     [DevOpsSnapshotTelemetryTask] Evaluating the background task."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "╭─ pwsh   SizeApi   173ms⠀                                                                 "
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "c7d14d94-4cb0-4cff-a269-72cbd3a36c78",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Perfeito! Pelos logs, vejo que o SQL Server 2022 está funcionando corretamente. A mensagem importante é:\n\n```\nSQL Server is now ready for client connections. This is an informational message; no user action is required.\n```\n\nO problema é que o healthcheck está usando ferramentas do SQL Server 2019, mas você atualizou para 2022. No SQL Server 2022, o caminho das ferramentas mudou. Vamos corrigir o healthcheck:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01H9PtmFuaNjEpq6eiRWcUdt",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "docker-compose.yml",
+                                "fsPath": "E:\\Pessoal\\Profissional\\Testes\\SizeApi\\docker-compose.yml"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- docker-compose.yml\n+++ docker-compose.yml\n@@ -13,7 +13,7 @@\n     networks:\n       - sizeapi-network\n     healthcheck:\n-      test: [\"CMD-SHELL\", \"/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SizeApi@2025! -Q 'SELECT 1'\"]\n+      test: [\"CMD-SHELL\", \"/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P SizeApi@2025! -Q 'SELECT 1' -C\"]\n       interval: 30s\n       timeout: 10s\n       retries: 5",
+                    "refToolCallId": "toolu_01H9PtmFuaNjEpq6eiRWcUdt"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vamos reiniciar os containers para aplicar a correção:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01ERgDSyCM6mst18poa8gn4h",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "docker-compose.yml",
+                            "patch": "@@ -402,16 +402,18 @@\n ql-tools\n+18\n /bin/sql\n@@ -465,16 +465,19 @@\n ELECT 1'\n+ -C\n %22%5D%0D%0A    \n",
+                            "isNew": false,
+                            "isApplied": true
+                        }
+                    ]
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "docker compose down",
+                    "id": "b829048e-f79b-4e20-bf9f-4eb35c5abd55",
+                    "status": "CONFIRMATION",
+                    "toolCallId": "toolu_01ERgDSyCM6mst18poa8gn4h",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "docker",
+                            "arguments": [
+                                "compose",
+                                "down"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "d98bb8ad-a3dc-4a8f-a0ff-37326face86d"
+            },
+            "createdAt": 1751999499827,
+            "isInternal": false
+        },
+        {
+            "id": "b86f438f-0f3e-4103-9c24-26bc1bff7d39",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "ao entrar meus dados no carrinho o valor retorna Response body"
+                },
+                {
+                    "type": "codeSnippet",
+                    "text": "{\n  \"Id\": 2,\n  \"EmpresaId\": 2,\n  \"NomeEmpresa\": \"Empresa TEste 2\",\n  \"NotasFiscais\": [\n    {\n      \"Id\": 5,\n      \"Numero\": \"13\",\n      \"Valor\": 850.8,\n      \"DataVencimento\": \"2025-07-23T00:00:00\"\n    },\n    {\n      \"Id\": 4,\n      \"Numero\": \"12\",\n      \"Valor\": 7000,\n      \"DataVencimento\": \"2025-09-06T00:00:00\"\n    },\n    {\n      \"Id\": 2,\n      \"Numero\": \"12354\",\n      \"Valor\": 5000,\n      \"DataVencimento\": \"2025-08-07T00:00:00\"\n    }\n  ],\n  \"ValorTotalBruto\": 12850.8,\n  \"ValorTotalLiquido\": 12001.26,\n  \"DataCriacao\": \"2025-07-08T18:45:41.2372823\"\n} quando deveria retornar {\n  \"empresa\": \"Nome da Empresa\",\n  \"cnpj\": \"XXXXXXXXXXXXXX\",\n  \"limite\": 50000,\n  \"notas_fiscais\": [\n    {\n      \"numero\": 1,\n      \"valor_bruto\": 850.80,\n      \"valor_liquido\": 834.28\n    },\n    {\n      \"numero\": 10,\n      \"valor_bruto\": 5000,\n      \"valor_liquido\": 4807.69\n    },\n    {\n      \"numero\": 11,\n      \"valor_bruto\": 7000,\n      \"valor_liquido\": 6471.89\n    }\n  ],\n  \"total_liquido\": 12113.86\n  \"total_bruto\": 12850.80\n} me ajude a ajustar somente o calculo do valor liquido para ser quivallemte",
+                    "language": "json"
+                }
+            ],
+            "context": {
+                "codebaseEnabled": true
+            },
+            "createdAt": 1752000422442,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "ao entrar meus dados no carrinho o valor retorna Response body"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "codeBlock",
+                        "attrs": {
+                            "language": "json"
+                        },
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "{\n  \"Id\": 2,\n  \"EmpresaId\": 2,\n  \"NomeEmpresa\": \"Empresa TEste 2\",\n  \"NotasFiscais\": [\n    {\n      \"Id\": 5,\n      \"Numero\": \"13\",\n      \"Valor\": 850.8,\n      \"DataVencimento\": \"2025-07-23T00:00:00\"\n    },\n    {\n      \"Id\": 4,\n      \"Numero\": \"12\",\n      \"Valor\": 7000,\n      \"DataVencimento\": \"2025-09-06T00:00:00\"\n    },\n    {\n      \"Id\": 2,\n      \"Numero\": \"12354\",\n      \"Valor\": 5000,\n      \"DataVencimento\": \"2025-08-07T00:00:00\"\n    }\n  ],\n  \"ValorTotalBruto\": 12850.8,\n  \"ValorTotalLiquido\": 12001.26,\n  \"DataCriacao\": \"2025-07-08T18:45:41.2372823\"\n} quando deveria retornar {\n  \"empresa\": \"Nome da Empresa\",\n  \"cnpj\": \"XXXXXXXXXXXXXX\",\n  \"limite\": 50000,\n  \"notas_fiscais\": [\n    {\n      \"numero\": 1,\n      \"valor_bruto\": 850.80,\n      \"valor_liquido\": 834.28\n    },\n    {\n      \"numero\": 10,\n      \"valor_bruto\": 5000,\n      \"valor_liquido\": 4807.69\n    },\n    {\n      \"numero\": 11,\n      \"valor_bruto\": 7000,\n      \"valor_liquido\": 6471.89\n    }\n  ],\n  \"total_liquido\": 12113.86\n  \"total_bruto\": 12850.80\n} me ajude a ajustar somente o calculo do valor liquido para ser quivallemte"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "isAgent": true,
+    "isNameGenerated": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "isE2EAgent": false,
+    "autoApply": false
+}
+}
